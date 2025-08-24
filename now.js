@@ -13,7 +13,7 @@ function setNickname(nick) {
   nickInput.value = "";
 }
 
-identityForm.addEventListener("submit", (e) => {
+identityForm.addEventListener("submit", e => {
   e.preventDefault();
   setNickname(nickInput.value.trim());
 });
@@ -24,7 +24,7 @@ resetNickBtn.addEventListener("click", () => {
 setNickname(getNickname());
 
 // ===== Wish submission =====
-document.getElementById("wish-form").addEventListener("submit", (e) => {
+document.getElementById("wish-form").addEventListener("submit", e => {
   e.preventDefault();
   const wish = document.getElementById("wish-input").value.trim();
   if (!wish) return;
@@ -42,7 +42,7 @@ document.getElementById("wish-form").addEventListener("submit", (e) => {
 // ===== Display wishes =====
 const entriesContainer = document.getElementById("entries");
 
-db.ref("entries").limitToLast(50).on("child_added", (snapshot) => {
+db.ref("entries").limitToLast(50).on("child_added", snapshot => {
   const entry = snapshot.val();
   const id = snapshot.key;
 
@@ -62,7 +62,7 @@ db.ref("entries").limitToLast(50).on("child_added", (snapshot) => {
 });
 
 // ===== Comment system =====
-document.addEventListener("submit", (e) => {
+document.addEventListener("submit", e => {
   if (e.target.classList.contains("comment-form")) {
     e.preventDefault();
     const entryId = e.target.dataset.id;
@@ -83,7 +83,7 @@ document.addEventListener("submit", (e) => {
 
 function listenForComments(entryId) {
   const container = document.getElementById(`comments-${entryId}`);
-  db.ref(`comments/${entryId}`).limitToLast(20).on("child_added", (snapshot) => {
+  db.ref(`comments/${entryId}`).limitToLast(20).on("child_added", snapshot => {
     const c = snapshot.val();
     const p = document.createElement("p");
     p.className = "comment";
