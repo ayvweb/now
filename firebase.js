@@ -1,4 +1,4 @@
-// Your Firebase config
+// Firebase config
 const firebaseConfig = {
   apiKey: "AIzaSyBK47x2qAkDioP4qQa5hManG9ULuNAp7dI",
   authDomain: "now-fire-e0c41.firebaseapp.com",
