@@ -4,69 +4,50 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>NOW</title>
-  <meta name="description" content="A global wall of what humans want to do — now." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <canvas id="starfield" aria-hidden="true"></canvas>
+  <canvas id="starfield"></canvas>
 
-  <header class="site-header">
-    <h1 class="title">NOW</h1>
-    <p class="tagline">What will you do before it's too late?</p>
+  <header>
+    <h1>NOW</h1>
+    <p>What will you do before it’s too late?</p>
   </header>
 
-  <main class="container">
-    <!-- Identity -->
-    <section class="panel" id="identity-panel">
-      <h2 class="panel-title">Who are you <span class="blink">_</span></h2>
-      <p class="muted">Pick a nickname (once). Leave blank to be <strong>Human</strong>. You can reset anytime.</p>
-      <form id="identity-form" class="row wrap">
-        <input id="nickname-input" class="input" placeholder="Nickname (optional)" maxlength="24" />
-        <button class="btn" type="submit">Save</button>
-        <button class="btn btn-ghost" type="button" id="reset-nick" title="Forget nickname">Forget</button>
+  <main>
+    <!-- Nickname -->
+    <section class="panel">
+      <h2>Who are you?</h2>
+      <form id="identity-form">
+        <input id="nickname-input" placeholder="Nickname (optional)" maxlength="24" />
+        <button type="submit">Save</button>
+        <button type="button" id="reset-nick">Forget</button>
       </form>
-      <p class="muted" id="current-nick"></p>
+      <p id="current-nick"></p>
     </section>
 
-    <!-- Submit wish -->
-    <section class="panel" id="submit-panel">
-      <h2 class="panel-title">Before I die, I want to…</h2>
+    <!-- Post wish -->
+    <section class="panel">
+      <h2>Before I die, I want to…</h2>
       <form id="wish-form">
-        <textarea id="wish-input" class="textarea" rows="2" maxlength="200" placeholder="e.g., See the northern lights"></textarea>
-        <div class="row between center">
-          <div class="muted tiny" id="char-count">0 / 200</div>
-          <button class="btn" type="submit">Post</button>
-        </div>
+        <textarea id="wish-input" rows="2" maxlength="200" placeholder="e.g., See the northern lights"></textarea>
+        <button type="submit">Post</button>
       </form>
-      <p class="tiny muted">No accounts. Minimal data. Be kind. No doxxing/hate.</p>
     </section>
 
-    <!-- Filters -->
-    <section class="panel" id="filters">
-      <div class="row wrap gap">
-        <button class="chip active" data-sort="new">Newest</button>
-        <button class="chip" data-sort="top">Top</button>
-        <button class="chip" data-sort="random">Random</button>
-        <button class="chip" id="refresh">Refresh</button>
-      </div>
+    <!-- Entries -->
+    <section class="panel">
+      <h2>Latest Wishes</h2>
+      <div id="entries"></div>
     </section>
-
-    <!-- Wall -->
-    <section id="wall" class="wall" aria-live="polite"></section>
-
-    <div class="center">
-      <button id="load-more" class="btn btn-ghost">Load more</button>
-    </div>
   </main>
 
-  <footer class="site-footer">
-    <p class="tiny muted">Built with <span class="heart">♥</span> for humans. Name chosen: NOW.</p>
-  </footer>
-
-  <script type="module" src="firebase.js"></script>
-  <script type="module" src="app.js"></script>
+  <!-- Firebase v8 SDK -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+  
+  <!-- Firebase config + app logic -->
+  <script src="firebase.js"></script>
+  <script src="now.js"></script>
 </body>
 </html>
