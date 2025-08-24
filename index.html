@@ -1,42 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NOW</title>
   <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
   <canvas id="starfield"></canvas>
 
   <header>
     <h1>NOW</h1>
-    <p>What will you do before it’s too late?</p>
+    <p>Do it before it's too late.</p>
   </header>
 
-  <main>
-    <!-- Nickname -->
-    <section class="panel">
+  <main class="container">
+    <!-- Left: User actions -->
+    <section class="panel left-panel">
       <h2>Who are you?</h2>
       <form id="identity-form">
-        <input id="nickname-input" placeholder="Nickname (optional)" maxlength="24" />
+        <input id="nickname-input" placeholder="Nickname (optional)" maxlength="24"/>
         <button type="submit">Save</button>
         <button type="button" id="reset-nick">Forget</button>
       </form>
       <p id="current-nick"></p>
-    </section>
 
-    <!-- Post wish -->
-    <section class="panel">
       <h2>Before I die, I want to…</h2>
       <form id="wish-form">
-        <textarea id="wish-input" rows="2" maxlength="200" placeholder="e.g., See the northern lights"></textarea>
+        <textarea id="wish-input" rows="3" maxlength="200" placeholder="Write your wish..."></textarea>
         <button type="submit">Post</button>
       </form>
     </section>
 
-    <!-- Entries -->
-    <section class="panel">
+    <!-- Right: Posted wishes -->
+    <section class="panel right-panel">
       <h2>Latest Wishes</h2>
       <div id="entries"></div>
     </section>
@@ -45,7 +43,7 @@
   <!-- Firebase v8 SDK -->
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
-  
+
   <!-- Firebase config + app logic -->
   <script src="firebase.js"></script>
   <script src="now.js"></script>
